@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/09/23 18:16:42 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/09/29 14:03:17 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
+int	ft_isprint(int c)
+{
+	if (c >= ' ' && c <= 126)
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+int	main(void)
+{
+	int	c;
 
-#endif
+	c = 127;
+	printf ("%d\n", ft_isprint(c));
+	printf ("%d\n", isprint(c));
+	return (0);
+}*/

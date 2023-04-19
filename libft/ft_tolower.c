@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/09/26 12:16:38 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/09/29 14:03:24 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c = c + 32;
+	return (c);
+}
+/*
+#include <unistd.h>
+#include <stdio.h>
 
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+int	main(void)
+{
+	int	a;
 
-#endif
+	a = 'A';
+	ft_tolower (a);
+	printf ("%d\n", ft_tolower(a));
+	a = ft_tolower(a);
+	write (1, &a, 1);
+	return (0);
+}*/

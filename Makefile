@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fernandoclaus <fernandoclaus@student.42    +#+  +:+       +#+         #
+#    By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/14 11:06:55 by fclaus-g          #+#    #+#              #
-#    Updated: 2023/04/19 09:20:43 by fernandocla      ###   ########.fr        #
+#    Updated: 2023/04/19 13:43:46 by fclaus-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,35 +19,44 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRC_PRINTF = ft_printf
+OBJ_PRINTF = ft_printf/*.o
 LIBFTPRINTF = ft_printf/libftprintf.a
 
-all: $(LIBFTPRINTF) client server
+SRC_LIBFT = libft
+OBJ_LIBFT = libft/*.o
+LIBFT = libft/libft.a
+
+all: $(LIBFT) $(LIBFTPRINTF) client server
 
 server: server.o
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ server.o
+	$(CC) $(CFLAGS) $(LIBFT) $(LIBFTPRINTF) -o $@ server.o
 
 client: client.o
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ client.o
+	$(CC) $(CFLAGS) $(LIBFT) $(LIBFTPRINTF) -o $@ client.o
 
 server_bonus: server_bonus.o
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ server_bonus.o
+	$(CC) $(CFLAGS) $(LIBFT) $(LIBFTPRINTF) -o $@ server_bonus.o
 
 client_bonus: client_bonus.o
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) -o $@ client_bonus.o
+	$(CC) $(CFLAGS) $(LIBFT) $(LIBFTPRINTF) -o $@ client_bonus.o
+	
+${LIBFTPRINTF}: 
+	$(MAKE) -C $(SRC_PRINTF)
+	
+${LIBFT}: 
+	$(MAKE) -C $(SRC_LIBFT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-${LIBFTPRINTF}:
-	@$(MAKE) -sC $(SRC_PRINTF)
-	@echo "Printf compilado"
+bonus: server_bonus client_bonus ${LIBFT} ${LIBFTPRINTF}
 
-bonus: server_bonus client_bonus ${LIBFTPRINTF}
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) - o server_bonus.c server_bonus
-	$(CC) $(CFLAGS) $(LIBFTPRINTF) - o client_bonus.c client_bonus
 clean:
-	$(RM) $(OBJECTS)
+	$(RM) $(OBJECTS) $(OBJ_PRINTF) $(OBJ_LIBFT)
+
 fclean: clean
 	$(RM) -f server client server_bonus client_bonus
+
 re: fclean all
+
 .PHONY: all clean fclean re

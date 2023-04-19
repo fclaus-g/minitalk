@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/11/02 14:22:44 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/11/02 14:46:17 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
-
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == 0)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

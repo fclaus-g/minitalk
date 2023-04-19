@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/10/14 16:08:52 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/10/24 11:40:51 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
+// Asigna espacio de memoria contiguo rellenando la memoria con 0
+// RETURN puntero a la memoria asignada
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*mem;
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
-
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-
-#endif
+	mem = malloc(count * size);
+	if (mem == 0)
+		return (mem);
+	ft_bzero (mem, count * size);
+	return (mem);
+}

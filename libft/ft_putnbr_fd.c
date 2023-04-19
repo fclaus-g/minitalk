@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:14:01 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:36:17 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/10/26 17:50:06 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/10/28 15:34:46 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -41,29 +36,7 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-void	handler(int signal)
-{
-	static int	bit_pos = 7;
-	static char	byte;
-
-	if (signal == SIGUSR1)
-		byte |= (1 << bit_pos);
-	bit_pos--;
-	if (bit_pos < 0)
-	{
-		ft_putchar_fd(byte, 1);
-		byte = 0;
-		bit_pos = 7;
-	}
-}
-
-int	main(void)
-{
-	ft_printf(VERDE_T"Server PID: %d\n", getpid());
-	ft_printf(MAGENTA_T"Waiting message...\n");
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	while (1)
-		pause();
-	return (0);
-}
+// int	main(void)
+// {
+// 	printf ("")
+// }

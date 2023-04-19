@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernandoclaus <fernandoclaus@student.42    +#+  +:+       +#+        */
+/*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 11:51:05 by fernandocla       #+#    #+#             */
-/*   Updated: 2023/04/18 13:51:12 by fernandocla      ###   ########.fr       */
+/*   Created: 2023/04/19 12:26:30 by fclaus-g          #+#    #+#             */
+/*   Updated: 2023/04/19 12:26:45 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

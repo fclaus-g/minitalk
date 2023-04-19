@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/09/23 17:07:51 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/10/04 11:04:29 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
+int	ft_isalnum(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+int main(void)
+{
+    int n;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-
-#endif
+    n = 32;
+    printf ("%d\n", ft_isalnum(n));
+    return(0);
+}*/

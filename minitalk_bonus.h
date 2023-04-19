@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fernandoclaus <fernandoclaus@student.42    +#+  +:+       +#+        */
+/*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:51:20 by fernandocla       #+#    #+#             */
-/*   Updated: 2023/04/18 13:50:28 by fernandocla      ###   ########.fr       */
+/*   Updated: 2023/04/19 13:46:38 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # include <signal.h>
 # include <stdlib.h>
 # include "ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 #endif

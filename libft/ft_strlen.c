@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:12:50 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/19 13:47:04 by fclaus-g         ###   ########.fr       */
+/*   Created: 2022/09/23 18:57:02 by fclaus-g          #+#    #+#             */
+/*   Updated: 2022/10/14 18:55:34 by fclaus-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# define VERDE_T "\x1b[32m]"
-# define MAGENTA_T "\x1b[35m"
-# define CYAN_T "\x1b[36m]"
+size_t	ft_strlen(const char *s)
+{
+	int	length;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+	length = 0;
+	while (s[length] != '\0')
+		length++;
+	return (length);
+}
 
-#endif
+/*
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+int main(void)
+{
+	char    *str;
+
+	str = "estrella galicia";
+	printf ("%d\n", ft_strlen(str));
+	printf ("%lu\n", strlen(str));
+	return(0);
+}*/
