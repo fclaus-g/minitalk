@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fclaus-g <fclaus-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fernandoclaus <fernandoclaus@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:17:04 by fclaus-g          #+#    #+#             */
-/*   Updated: 2023/04/14 13:27:57 by fclaus-g         ###   ########.fr       */
+/*   Created: 2023/04/18 11:51:12 by fernandocla       #+#    #+#             */
+/*   Updated: 2023/04/18 13:50:50 by fernandocla      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_isdigit(int c)
 {
@@ -45,13 +45,28 @@ int	ft_atoi(const char *str)
 	return (sign * result);
 }
 
+void	handler(int signal)
+{
+	static int	bytes = 0;
+
+	if (signal == SIGUSR2)
+	{
+		bytes++;
+	}
+	if (signal == SIGUSR1)
+	{
+		ft_printf(GREEN_T"Message received. Size %d bytes\n", bytes);
+		exit (0);
+	}
+}
+
 void	send_message(int pid, char *message)
 {
 	int	byte;
 	int	bit_pos;
-	
+
 	byte = 0;
-	while (message[byte])
+	while (message[byte] + 1)
 	{
 		bit_pos = 7;
 		while (bit_pos > -1)
@@ -59,14 +74,13 @@ void	send_message(int pid, char *message)
 			if (message[byte] & (1 << bit_pos))
 			{
 				kill(pid, SIGUSR1);
-			}	
-
+			}
 			else
 			{
 				kill(pid, SIGUSR2);
 			}	
 			bit_pos--;
-			usleep(500);
+			usleep(50);
 		}
 		byte++;
 	}
@@ -76,15 +90,20 @@ int	main(int ac, char **av)
 {
 	int		pid;
 	char	*message;
-	
+
 	if (ac != 3)
 	{
-		printf("Wrong number of arguments\n");
-		printf("Usage: ./client [server PID] [message]\n");
+		printf(RED_T"Wrong number of arguments\n");
+		printf(GREEN_T"Usage: ./client [server PID] [message]\n");
 		return (-1);
 	}
 	pid = ft_atoi(av[1]);
 	message = av[2];
+	printf("%s\n", message);
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
 	send_message(pid, message);
+	while (9)
+		pause();
 	return (0);
 }
